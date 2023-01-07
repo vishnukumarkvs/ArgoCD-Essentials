@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-project-role-1
+  namespace: argocd
+spec:
+  destination:
+    namespace: guestbook
+    server: "https://kubernetes.default.svc"
+  project: project-with-role
+  source:
+    path: guestbook
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
