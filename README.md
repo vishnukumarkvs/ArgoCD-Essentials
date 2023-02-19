@@ -1,4 +1,22 @@
-Notes: Installation options
+# ArgoCD
+
+## Why need of ArgoCD? 
+ Reference: https://www.youtube.com/watch?v=MeU5_k9ssrs
+![image](https://user-images.githubusercontent.com/116954249/219953779-f2fef5a9-56a3-4e0d-9a99-c982e995de59.png)
+
+- Purposefully build for K8s based on GitOps
+- ArgoCD tool is present inside K8S cluster which monitors and maintains the cluster
+- Pull model, not push model like jenkins which push changes using kubectl
+- Best Practice: Split up CI and CD. 
+- Meaning, we have two repos. First one has code which is used by CI tool like Jenkins and changes K8s files in second repo
+- As said earlier, we have a second repo containing only k8s files which are tracked by ArgoCD present inside K8s cluster
+- easy rollback. We can simply revert commit to rollback to previous state
+- Cluster Disaster Recovery: Simply create another cluster and use this repo. As Desired state is this repo itself
+- No Cluster Credentials outside cluster
+- ArgoCd is an extension of Kubernetes. Meaning it can access K8s resources like etcd, kube controller. This way, it tracks resources of the cluster
+
+
+## Notes: Installation options
 
 You need to create a namespace for argocd.
 
